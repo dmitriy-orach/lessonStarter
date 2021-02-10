@@ -1,16 +1,20 @@
 {
   "root": true,
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
-  "plugins": ["prettier", "unicorn"],
+  "plugins": ["prettier", "unicorn", "@typescript-eslint"],
   "extends": [
     "airbnb-base",
     "plugin:unicorn/recommended",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/unicorn"
+    "prettier/unicorn",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "env": {
     "es6": true,
@@ -31,6 +35,10 @@
       }
     ],
     "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "lines-between-class-members": "off",
+    "unicorn/no-null": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "prefer-destructuring": [
       "error",
       {
@@ -41,5 +49,13 @@
         "enforceForRenamedProperties": false
       }
     ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts", ".d.ts"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
   }
 }
